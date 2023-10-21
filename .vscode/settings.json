@@ -2,7 +2,17 @@
   "xo.enable": true,
   "xo.format.enable": true,
   "editor.formatOnSave": true,
-  "[javascript]": {
+  "[typescript]": {
     "editor.defaultFormatter": "samverschueren.linter-xo"
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/*.js": true,
+    "**/*.d.ts": true
   }
 }

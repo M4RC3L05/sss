@@ -7,9 +7,6 @@
     ".": "./src/app.js",
     "./middlewares": "./src/middlewares/mod.js"
   },
-  "scripts": {
-    "generate:dts": "rm -rf ./src/*.d.ts && rm -rf ./src/**/*.d.ts && tsc"
-  },
   "prettier": {
     "arrowParens": "always",
     "bracketSpacing": true,
@@ -22,14 +19,27 @@
     "trailingComma": "all"
   },
   "xo": {
-    "env": ["node"],
+    "env": [
+      "node"
+    ],
+    "extensions": [
+      ".ts"
+    ],
     "prettier": true,
     "rules": {
-      "func-names": "off"
+      "func-names": "off",
+      "@typescript-eslint/promise-function-async": "off"
     }
   },
+  "scripts": {
+    "transpile": "tsc"
+  },
   "devDependencies": {
+    "@types/node": "^20.8.7",
     "prettier": "^3.0.3",
     "xo": "^0.56.0"
+  },
+  "dependencies": {
+    "find-my-way": "^7.7.0"
   }
 }
