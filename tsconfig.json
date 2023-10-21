@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "allowJs": true,
+    "emitDeclarationOnly": true,
+    "removeComments": true
+  },
+  "include": ["./src/*.js", "./src/**/*.js"],
+  "exclude": ["./node_modules", "./src/*.d.ts", "./src/**/*.d.ts"]
+}

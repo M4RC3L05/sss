@@ -7,6 +7,9 @@
     ".": "./src/app.js",
     "./middlewares": "./src/middlewares/mod.js"
   },
+  "scripts": {
+    "generate:dts": "rm -rf ./src/*.d.ts && rm -rf ./src/**/*.d.ts && tsc"
+  },
   "prettier": {
     "arrowParens": "always",
     "bracketSpacing": true,
