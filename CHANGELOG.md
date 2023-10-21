@@ -1,0 +1,12 @@
+### v0.1.0 (2023-10-21)
+
+- [Add licence and readme](https://github.com/M4RC3L05/sss/commit/005eb37fd4079cd808709dc5bc7ae8ae36c9535e)
+- [Add version script](https://github.com/M4RC3L05/sss/commit/714ab9ba394f60d259d75bd596827988791b463e)
+- [Add lint stuff](https://github.com/M4RC3L05/sss/commit/55d3aa5b083224045f3ff2a4678962eb0561d5cf)
+- [Add ts](https://github.com/M4RC3L05/sss/commit/c57dad223e43530b381d4079b0eadc8ed81df1a1)
+- [Add dts](https://github.com/M4RC3L05/sss/commit/52d1553d6b864fa0b7205814b9b75091a1c40993)
+- [Fix js docs](https://github.com/M4RC3L05/sss/commit/1e9da77dc2676e9c64f731d6847309353dd64ca1)
+- [Remove npm workspaces](https://github.com/M4RC3L05/sss/commit/51021cd1ff0574ce71194312003b5ddcddea57fa)
+- [Add vscode config](https://github.com/M4RC3L05/sss/commit/212fefe72fd7cd6d909f992b95c5a7f181b46ed4)
+- [Use esm](https://github.com/M4RC3L05/sss/commit/579c7cefdecea2af4624312a674c17f8688b08fc)
+- [Init](https://github.com/M4RC3L05/sss/commit/3d2e809d2e6fffcb85d4dad1e6be8e1fd38cc6af)
