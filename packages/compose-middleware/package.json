@@ -1,6 +1,7 @@
 {
   "name": "@sss/compose-middleware",
   "version": "0.0.0",
+  "type": "module",
   "main": "mod.js",
   "exports": {
     ".": "./mod.js"
