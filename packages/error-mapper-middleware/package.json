@@ -1,9 +1,0 @@
-{
-  "name": "@sss/error-mapper-middleware",
-  "version": "0.0.0",
-  "main": "mod.js",
-  "type": "module",
-  "exports": {
-    ".": "./mod.js"
-  }
-}

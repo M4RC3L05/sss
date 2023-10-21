@@ -1,9 +1,32 @@
 {
-  "name": "@sss/monorepo",
-  "workspaces": [
-    "packages/app",
-    "packages/compose-middleware",
-    "packages/error-mapper-middleware",
-    "packages/router-middleware"
-  ]
+  "name": "sss",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./src/app.js",
+  "exports": {
+    ".": "./src/app.js",
+    "./middlewares": "./src/middlewares/mod.js"
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "bracketSpacing": true,
+    "editorconfig": true,
+    "proseWrap": "preserve",
+    "printWidth": 100,
+    "quoteProps": "as-needed",
+    "semi": true,
+    "singleQuote": false,
+    "trailingComma": "all"
+  },
+  "xo": {
+    "env": ["node"],
+    "prettier": true,
+    "rules": {
+      "func-names": "off"
+    }
+  },
+  "devDependencies": {
+    "prettier": "^3.0.3",
+    "xo": "^0.56.0"
+  }
 }
