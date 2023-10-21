@@ -32,10 +32,17 @@
     }
   },
   "scripts": {
-    "transpile": "tsc"
+    "prepare": "node -e \"try { require('husky').install() } catch (e) {if (e.code !== 'MODULE_NOT_FOUND') throw e}\"",
+    "transpile": "tsc",
+    "lint-staged": "lint-staged",
+    "postinstall": "patch-package"
   },
   "devDependencies": {
     "@types/node": "^20.8.7",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.0.2",
+    "offline-github-changelog": "^3.0.1",
+    "patch-package": "^8.0.0",
     "prettier": "^3.0.3",
     "xo": "^0.56.0"
   },
