@@ -1,0 +1,9 @@
+{
+  "name": "@sss/monorepo",
+  "workspaces": [
+    "packages/app",
+    "packages/compose-middleware",
+    "packages/error-mapper-middleware",
+    "packages/router-middleware"
+  ]
+}

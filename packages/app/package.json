@@ -1,0 +1,12 @@
+{
+  "name": "@sss/app",
+  "version": "0.0.0",
+  "description": "",
+  "main": "mod.js",
+  "exports": {
+    ".": "./mod.js"
+  },
+  "dependencies": {
+    "@sss/compose-middleware": "^0.0.0"
+  }
+}
