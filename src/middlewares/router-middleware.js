@@ -2,11 +2,11 @@ import fmw from "find-my-way";
 
 /** @typedef {import("node:http").IncomingMessage} Request */
 /** @typedef {import("node:http").ServerResponse} Response */
-/** @typedef {(req: Request, req: Response, next: () => Promise<void> | void) => Promise<void> | void} Middleware */
+/** @typedef {(req: Request, res: Response, next: () => Promise<void> | void) => Promise<void> | void} Middleware */
 
 /**
- * @param {(router: fmw.Instance) => void} routes
- * @param {fmw.Config} [options]
+ * @param {(router: import("fmw").Instance) => void} routes
+ * @param {import("fmw").Config} [options]
  * @returns {Middleware}
  */
 const routerMiddleware = (routes, options) => {

@@ -2,7 +2,7 @@ import { compose } from "./middlewares/mod.js";
 
 /** @typedef {import("node:http").IncomingMessage} Request */
 /** @typedef {import("node:http").ServerResponse} Response */
-/** @typedef {(req: Request, req: Response, next: () => Promise<void> | void) => Promise<void> | void} Middleware */
+/** @typedef {(req: Request, res: Response, next: () => Promise<void> | void) => Promise<void> | void} Middleware */
 
 class App {
 	/** @type {Middleware[]} */
