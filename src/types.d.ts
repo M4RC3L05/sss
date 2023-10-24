@@ -1,10 +1,20 @@
-/// <reference types="node" resolution-mode="require"/>
-import { type IncomingMessage, type ServerResponse } from "node:http";
+export type KeyExists<T, K extends string | number | symbol> = K extends keyof T ? true : false;
+export type IsNodeRuntime = KeyExists<typeof globalThis, "NodeJS">;
+export type IsBunRuntime = KeyExists<typeof globalThis, "Bun">;
+export type IsDenoRuntime = KeyExists<typeof globalThis, "Deno">;
+export type NodeRuntime = "node";
+export type BunRuntime = "bun";
+export type DenoRuntime = "deno";
+export type WebRuntime = BunRuntime | DenoRuntime;
+export type JsRuntime = NodeRuntime | WebRuntime;
+export type CurrentJsRuntime = IsNodeRuntime extends true ? NodeRuntime : IsBunRuntime extends true ? BunRuntime : IsDenoRuntime extends true ? DenoRuntime : never;
 export type Next = () => Promise<void> | void;
-export type Middleware = (request: IncomingMessage, response: ServerResponse, next: Next) => Promise<void> | void;
-export type Handler = (request: IncomingMessage, response: ServerResponse) => void;
-export type ErrorHandle = {
-    shouldHandle(error: any): boolean;
-    handle(request: IncomingMessage, response: ServerResponse, error: any): void | Promise<void>;
-};
-export type ErrorLog = (error: any) => void;
+export type Middleware<R extends JsRuntime = CurrentJsRuntime> = R extends NodeRuntime ? NodeMiddleware : R extends WebRuntime ? WebMiddleware : never;
+export type NodeMiddleware = (request: import("node:http").IncomingMessage, response: import("node:http").ServerResponse, next: Next) => Promise<void> | void;
+export type WebMiddleware = (request: Request, next: Next) => Promise<Response> | Response;
+export type Handler<R extends JsRuntime = CurrentJsRuntime> = R extends NodeRuntime ? NodeHandler : R extends WebRuntime ? WebHandler : never;
+export type NodeHandler = (request: import("node:http").IncomingMessage, response: import("node:http").ServerResponse) => Promise<void> | void;
+export type WebHandler = (request: Request) => Promise<Response> | Response;
+export type ErrorHandler<R extends JsRuntime = CurrentJsRuntime> = R extends NodeRuntime ? NodeErrorHandler : R extends WebRuntime ? WebErrorHandler : never;
+export type NodeErrorHandler = (error: unknown, request: import("node:http").IncomingMessage, response: import("node:http").ServerResponse) => Promise<void> | void;
+export type WebErrorHandler = (error: unknown, request: Request) => Promise<Response> | Response;
