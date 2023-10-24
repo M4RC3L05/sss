@@ -3,12 +3,10 @@
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "target": "ESNext",
-    "noEmitHelpers": true,
-    "declaration": true,
+    "allowJs": true,
     "strict": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
+    "declaration": true,
+    "emitDeclarationOnly": true
   },
-  "include": ["./src"],
-  "exclude": ["./node_modules", "./src/*.d.ts", "./src/**/*.d.ts"]
+  "include": ["src/*.js", "src/**/*.js"]
 }
