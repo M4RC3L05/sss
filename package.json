@@ -2,9 +2,9 @@
   "name": "sss",
   "version": "0.1.0",
   "type": "module",
-  "main": "./src/app.js",
+  "main": "./src/mod.js",
   "exports": {
-    ".": "./src/app.js",
+    ".": "./src/mod.js",
     "./middlewares": "./src/middlewares/mod.js"
   },
   "prettier": {
@@ -19,35 +19,37 @@
     "trailingComma": "all"
   },
   "xo": {
-    "env": [
-      "node"
-    ],
-    "extensions": [
-      ".ts"
-    ],
+    "env": ["node"],
+    "ignore": ["src/*.d.ts", "src/**/*.d.ts"],
     "prettier": true,
     "rules": {
       "func-names": "off",
-      "@typescript-eslint/promise-function-async": "off"
+      "@typescript-eslint/promise-function-async": "off",
+      "n/file-extension-in-import": "off",
+      "@typescript-eslint/ban-ts-comment": "off",
+      "unicorn/no-abusive-eslint-disable": "off"
     }
   },
   "scripts": {
     "prepare": "node -e \"try { require('husky').install() } catch (e) {if (e.code !== 'MODULE_NOT_FOUND') throw e}\"",
+    "pretranspile": "rm -rf ./src/*.d.ts ./src/**/*.d.ts || :",
     "transpile": "tsc",
+    "posttranspile": "sed -i 's/= \"node\">/= CurrentJsRuntime>/g' ./src/types.d.ts && find ./src -type f -name \"*.d.ts\" -exec sed -i 's/= \"node\">/= types.CurrentJsRuntime>/g' {} \\;",
+    "lint": "xo && tsc -p tsconfig.json --skipLibCheck",
     "lint-staged": "lint-staged",
     "version": "offline-github-changelog --next=${npm_new_version} | sed -e '/Release v.*/d;s/ (\\[.*\\]\\(.*\\))//gm' > CHANGELOG.md && git add CHANGELOG.md",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package || :"
   },
   "devDependencies": {
-    "@types/node": "^20.8.7",
     "husky": "^8.0.3",
     "lint-staged": "^15.0.2",
     "offline-github-changelog": "^3.0.1",
     "patch-package": "^8.0.0",
     "prettier": "^3.0.3",
+    "typescript": "^5.2.2",
     "xo": "^0.56.0"
   },
   "dependencies": {
-    "find-my-way": "^7.7.0"
+    "find-my-way": "7.7.0"
   }
 }
