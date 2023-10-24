@@ -4,9 +4,13 @@
     "moduleResolution": "NodeNext",
     "target": "ESNext",
     "allowJs": true,
-    "strict": true,
+    "noEmitHelpers": true,
     "declaration": true,
-    "emitDeclarationOnly": true
+    "emitDeclarationOnly": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   },
-  "include": ["src/*.js", "src/**/*.js"]
+  "include": ["./src"],
+  "exclude": ["./node_modules", "./src/*.d.ts", "./src/**/*.d.ts"]
 }
