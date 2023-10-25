@@ -1,3 +1,16 @@
+### v0.2.0 (2023-10-25)
+
+- [Improve typings and compose usage](https://github.com/M4RC3L05/sss/commit/3531d0b9fc32e34018b3e2afd424e538e8e46f3c)
+- [Improve typing for routes and others](https://github.com/M4RC3L05/sss/commit/611f76c04d437946bc1d034407ecc2a27780d155)
+- [Add \`removeComments\`](https://github.com/M4RC3L05/sss/commit/83ce4cdae73d480953c17babc0ea50ac52da06b7)
+- [Revert to js and tsc to generate .d.ts files](https://github.com/M4RC3L05/sss/commit/d9e3795a363fb89c2a01b6fecccd771fa7b419f4)
+- [Update tsconfig file](https://github.com/M4RC3L05/sss/commit/ebfdeb61232a6ef400071a11b79609989245e43e)
+- [Update lint-staged config file](https://github.com/M4RC3L05/sss/commit/d4661164c8a218fa2381c707e607c19479a4a395)
+- [Update js projet files](https://github.com/M4RC3L05/sss/commit/33c9490c1455a2db2f1de51fb3315d09ef3a73ab)
+- [Update vscode settings](https://github.com/M4RC3L05/sss/commit/fc516580478f0a02cc87ea2665469bc74f905b39)
+- [Add tsconfig](https://github.com/M4RC3L05/sss/commit/9e9d234d8f42a8b395bb4feaa921dceb9e1cc20a)
+- [Add editorconfig](https://github.com/M4RC3L05/sss/commit/f52cf3219a41cf1a0fc073e29d6ac232654c571f)
+
 ### v0.1.0 (2023-10-21)
 
 - [Add licence and readme](https://github.com/M4RC3L05/sss/commit/005eb37fd4079cd808709dc5bc7ae8ae36c9535e)

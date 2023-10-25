@@ -1,6 +1,6 @@
 {
   "name": "sss",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "main": "./src/mod.js",
   "exports": {
@@ -19,8 +19,13 @@
     "trailingComma": "all"
   },
   "xo": {
-    "env": ["node"],
-    "ignore": ["src/*.d.ts", "src/**/*.d.ts"],
+    "env": [
+      "node"
+    ],
+    "ignore": [
+      "src/*.d.ts",
+      "src/**/*.d.ts"
+    ],
     "prettier": true,
     "rules": {
       "func-names": "off",
