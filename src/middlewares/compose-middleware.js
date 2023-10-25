@@ -3,17 +3,17 @@ import * as types from "../types.js";
 
 /**
  * @template {types.JsRuntime} [R=types.CurrentJsRuntime]
- * @param {Array<types.Middleware<R>>} fns
+ * @param {...types.Middleware<R>} middlewares
  * @returns {types.Handler<R>}
  */
-const composeMiddleware = (fns) => {
+const composeMiddleware = (...middlewares) => {
   return function handler(request, response) {
     let i = 0;
 
     return step();
 
     async function step() {
-      const m = fns[i];
+      const m = middlewares[i];
 
       if (!m) return;
 
