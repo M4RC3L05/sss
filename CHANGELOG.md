@@ -1,3 +1,7 @@
+### v0.2.1 (2023-10-25)
+
+- [Fix types for nodejs](https://github.com/M4RC3L05/sss/commit/1873af0a4c3791e72cb66ba74a3724598635f861)
+
 ### v0.2.0 (2023-10-25)
 
 - [Improve typings and compose usage](https://github.com/M4RC3L05/sss/commit/3531d0b9fc32e34018b3e2afd424e538e8e46f3c)
