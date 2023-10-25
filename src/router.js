@@ -23,7 +23,7 @@ class Router {
 
   /**
    * @param {string} path
-   * @param  {...types.Middleware<R>} middlewares
+   * @param  {...types.RouteMiddleware<R>} middlewares
    */
   get(path, ...middlewares) {
     this.#router?.get(path, compose(middlewares));
@@ -31,7 +31,7 @@ class Router {
 
   /**
    * @param {string} path
-   * @param  {...types.Middleware<R>} middlewares
+   * @param  {...types.RouteMiddleware<R>} middlewares
    */
   head(path, ...middlewares) {
     this.#router?.head(path, compose(middlewares));
@@ -39,7 +39,7 @@ class Router {
 
   /**
    * @param {string} path
-   * @param  {...types.Middleware<R>} middlewares
+   * @param  {...types.RouteMiddleware<R>} middlewares
    */
   post(path, ...middlewares) {
     this.#router?.post(path, compose(middlewares));
@@ -47,7 +47,7 @@ class Router {
 
   /**
    * @param {string} path
-   * @param  {...types.Middleware<R>} middlewares
+   * @param  {...types.RouteMiddleware<R>} middlewares
    */
   put(path, ...middlewares) {
     this.#router?.put(path, compose(middlewares));
@@ -55,7 +55,7 @@ class Router {
 
   /**
    * @param {string} path
-   * @param  {...types.Middleware<R>} middlewares
+   * @param  {...types.RouteMiddleware<R>} middlewares
    */
   delete(path, ...middlewares) {
     this.#router?.delete(path, compose(middlewares));
@@ -63,7 +63,7 @@ class Router {
 
   /**
    * @param {string} path
-   * @param  {...types.Middleware<R>} middlewares
+   * @param  {...types.RouteMiddleware<R>} middlewares
    */
   connect(path, ...middlewares) {
     this.#router?.connect(path, compose(middlewares));
@@ -71,7 +71,7 @@ class Router {
 
   /**
    * @param {string} path
-   * @param  {...types.Middleware<R>} middlewares
+   * @param  {...types.RouteMiddleware<R>} middlewares
    */
   options(path, ...middlewares) {
     this.#router?.options(path, compose(middlewares));
@@ -79,7 +79,7 @@ class Router {
 
   /**
    * @param {string} path
-   * @param  {...types.Middleware<R>} middlewares
+   * @param  {...types.RouteMiddleware<R>} middlewares
    */
   trace(path, ...middlewares) {
     this.#router?.trace(path, compose(middlewares));
@@ -87,7 +87,7 @@ class Router {
 
   /**
    * @param {string} path
-   * @param  {...types.Middleware<R>} middlewares
+   * @param  {...types.RouteMiddleware<R>} middlewares
    */
   path(path, ...middlewares) {
     this.#router?.patch(path, compose(middlewares));

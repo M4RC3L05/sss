@@ -16,10 +16,10 @@ class App {
   #errorHandler;
 
   /**
-   * @param  {Array<types.Middleware<R>>} m
+   * @param  {...types.Middleware<R>} middlewares
    */
-  use(...m) {
-    this.#middlewares.push(...m.filter((f) => typeof f === "function"));
+  use(...middlewares) {
+    this.#middlewares.push(...middlewares.filter((f) => typeof f === "function"));
     this.#handler = compose(this.#middlewares);
   }
 
