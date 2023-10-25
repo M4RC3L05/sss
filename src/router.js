@@ -89,7 +89,7 @@ class Router {
    * @param {string} path
    * @param {...types.RouteMiddleware<R>} middlewares
    */
-  path(path, ...middlewares) {
+  patch(path, ...middlewares) {
     this.#router?.patch(path, compose(...middlewares));
   }
 

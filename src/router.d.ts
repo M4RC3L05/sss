@@ -9,7 +9,7 @@ declare class Router<R extends types.JsRuntime = types.CurrentJsRuntime> {
     connect(path: string, ...middlewares: types.RouteMiddleware<R>[]): void;
     options(path: string, ...middlewares: types.RouteMiddleware<R>[]): void;
     trace(path: string, ...middlewares: types.RouteMiddleware<R>[]): void;
-    path(path: string, ...middlewares: types.RouteMiddleware<R>[]): void;
+    patch(path: string, ...middlewares: types.RouteMiddleware<R>[]): void;
     middleware(): types.Middleware<R>;
     #private;
 }
