@@ -1,3 +1,7 @@
+### v0.2.2 (2023-10-25)
+
+- [Fix route \`patch\` method name](https://github.com/M4RC3L05/sss/commit/76012ecff960b576bbb42f7c2717b8744e044a5d)
+
 ### v0.2.1 (2023-10-25)
 
 - [Fix types for nodejs](https://github.com/M4RC3L05/sss/commit/1873af0a4c3791e72cb66ba74a3724598635f861)
