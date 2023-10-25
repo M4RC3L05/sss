@@ -9,7 +9,8 @@
     "emitDeclarationOnly": true,
     "strict": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "removeComments": true
   },
   "include": ["./src"],
   "exclude": ["./node_modules", "./src/*.d.ts", "./src/**/*.d.ts"]
