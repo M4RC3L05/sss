@@ -20,21 +20,22 @@
 /** @typedef {Request & RouteRequestExtras} RouteRequest */
 /** @typedef {import("node:http").IncomingMessage & RouteRequestExtras} RouteIncomingMessage */
 
-/** @typedef {() => Promise<void> | void} Next */
+/** @typedef {() => Promise<void> | void} NodeNext */
+/** @typedef {() => Promise<Response> | Response} WebNext */
 
 /**
  * @template {JsRuntime} [R=CurrentJsRuntime]
  * @typedef {R extends NodeRuntime ? NodeMiddleware : R extends WebRuntime ? WebMiddleware : never} Middleware
  */
-/** @typedef {(request: import("node:http").IncomingMessage, response: import("node:http").ServerResponse, next: Next) => Promise<void> | void} NodeMiddleware */
-/** @typedef {(request: Request, next: Next) => Promise<Response> | Response} WebMiddleware */
+/** @typedef {(request: import("node:http").IncomingMessage, response: import("node:http").ServerResponse, next: NodeNext) => Promise<void> | void} NodeMiddleware */
+/** @typedef {(request: Request, next: WebNext) => Promise<Response> | Response} WebMiddleware */
 
 /**
  * @template {JsRuntime} [R=CurrentJsRuntime]
  * @typedef {R extends NodeRuntime ? NodeRouteMiddleware : R extends WebRuntime ? WebRouteMiddleware : never} RouteMiddleware
  */
-/** @typedef {(request: RouteIncomingMessage, response: import("node:http").ServerResponse, next: Next) => Promise<void> | void} NodeRouteMiddleware */
-/** @typedef {(request: RouteRequest, next: Next) => Promise<Response> | Response} WebRouteMiddleware */
+/** @typedef {(request: RouteIncomingMessage, response: import("node:http").ServerResponse, next: NodeNext) => Promise<void> | void} NodeRouteMiddleware */
+/** @typedef {(request: RouteRequest, next: WebNext) => Promise<Response> | Response} WebRouteMiddleware */
 
 /**
  * @template {JsRuntime} [R=CurrentJsRuntime]
