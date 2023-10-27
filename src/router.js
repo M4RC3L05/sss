@@ -16,6 +16,7 @@ class Router {
     const dep = await ("Deno" in globalThis
       ? import("npm:find-my-way@7.7.0")
       : import("find-my-way"));
+
     this.#router = dep.default(config);
 
     return this;
@@ -108,7 +109,7 @@ class Router {
       request.params = match.params;
       request.searchParams = match.searchParams;
 
-      return match.handler(request, responseOrNext, next);
+      return match.handler(request, responseOrNext ?? next, next);
     };
   }
 }

@@ -43,7 +43,8 @@
     "lint": "xo && tsc -p tsconfig.json --skipLibCheck",
     "lint-staged": "lint-staged",
     "version": "offline-github-changelog --next=${npm_new_version} | sed -e '/Release v.*/d;s/ (\\[.*\\]\\(.*\\))//gm' > CHANGELOG.md && git add CHANGELOG.md",
-    "postinstall": "patch-package || :"
+    "postinstall": "patch-package || :",
+    "test": "node --test"
   },
   "devDependencies": {
     "husky": "^8.0.3",

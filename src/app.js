@@ -9,7 +9,7 @@ class App {
   /** @type {Array<types.Middleware<R>>} */
   #middlewares = [];
 
-  /** @type {types.Handler<R> | undefined} */
+  /** @type {types.Middleware<R> | undefined} */
   #handler;
 
   /** @type {types.ErrorHandler<R> | undefined} */
