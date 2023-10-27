@@ -1,3 +1,9 @@
+### v1.0.0 (2023-10-27)
+
+- [Add tests](https://github.com/M4RC3L05/sss/commit/cb828a85110331602a2453d2b5686daf6b2fd21e)
+- [Improve types](https://github.com/M4RC3L05/sss/commit/ceeef68af2a277d713692404d0ba84d5e1f00ba0)
+- [Use 20.x LTS](https://github.com/M4RC3L05/sss/commit/a0de73330645896e1628a4ce412bf51f56479a73)
+
 ### v0.2.2 (2023-10-25)
 
 - [Fix route \`patch\` method name](https://github.com/M4RC3L05/sss/commit/76012ecff960b576bbb42f7c2717b8744e044a5d)
