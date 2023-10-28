@@ -193,5 +193,7 @@ describe("composeMiddleware()", () => {
     assert.equal(f4.mock.callCount(), 1);
     assert.deepEqual(f4.mock.calls[0].arguments.length, 3);
     assert.deepEqual(f4.mock.calls[0].arguments[0], error);
+    assert.deepEqual(f4.mock.calls[0].arguments[1], 1);
+    assert.deepEqual(f4.mock.calls[0].arguments[2], n);
   });
 });
