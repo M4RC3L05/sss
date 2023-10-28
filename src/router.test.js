@@ -122,7 +122,7 @@ describe("Router", () => {
         assert.equal(f2.mock.callCount(), 1);
         assert.equal(f3.mock.callCount(), 0);
         assert.equal(errorHandler.mock.callCount(), 1);
-        assert.equal(errorHandler.mock.calls[0].arguments.length, 1);
+        assert.equal(errorHandler.mock.calls[0].arguments.length, 3);
         assert.equal(errorHandler.mock.calls[0].arguments[0], error);
       });
     });

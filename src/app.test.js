@@ -28,7 +28,7 @@ describe("App", () => {
       app.handle()(1, 2);
 
       assert.equal(fn.mock.callCount(), 1);
-      assert.equal(fn.mock.calls[0].arguments.length, 1);
+      assert.equal(fn.mock.calls[0].arguments.length, 3);
       assert.equal(fn.mock.calls[0].arguments[0], error);
     });
   });

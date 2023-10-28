@@ -40,7 +40,7 @@
     "prepare": "node -e \"try { require('husky').install() } catch (e) {if (e.code !== 'MODULE_NOT_FOUND') throw e}\"",
     "pretranspile": "rm -rf ./src/*.d.ts ./src/**/*.d.ts || :",
     "transpile": "tsc",
-    "posttranspile": "sed -i 's/= \"node\">/= CurrentJsRuntime>/g' ./src/types.d.ts && find ./src -type f -name \"*.d.ts\" -exec sed -i 's/= \"node\">/= types.CurrentJsRuntime>/g' {} \\;",
+    "posttranspile": "sed -i 's/= \"node\">/= CurrentJsRuntime>/g' ./src/types.d.ts && sed -i 's/types\\.NodeErrorHandler/types\\.ErrorHandler/g' ./src/middlewares/compose-middleware.d.ts && find ./src -type f -name \"*.d.ts\" -exec sed -i 's/= \"node\">/= types.CurrentJsRuntime>/g' {} \\;",
     "lint": "xo && tsc -p tsconfig.json --skipLibCheck",
     "lint-staged": "lint-staged",
     "version": "offline-github-changelog --next=${npm_new_version} | sed -e '/Release v.*/d;s/ (\\[.*\\]\\(.*\\))//gm' > CHANGELOG.md && git add CHANGELOG.md",

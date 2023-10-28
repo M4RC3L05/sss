@@ -3,7 +3,7 @@ import * as types from "../types.js";
 
 /**
  * @template {types.JsRuntime} [R=types.CurrentJsRuntime]
- * @param {(error: unknown) => void} [onError]
+ * @param {types.ErrorHandler} [onError]
  * @param {...types.Middleware<R>} middlewares
  * @returns {types.Middleware<R>}
  */
@@ -16,7 +16,7 @@ const composeMiddleware = (onError, ...middlewares) => {
     function step(error) {
       if (error) {
         if (typeof onError === "function") {
-          return onError(error);
+          return onError(error, request, responseOrNext);
         }
 
         throw error;
