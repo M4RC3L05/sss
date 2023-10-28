@@ -13,5 +13,5 @@
     "removeComments": true
   },
   "include": ["./src"],
-  "exclude": ["./node_modules", "./src/*.d.ts", "./src/**/*.d.ts", "./src/**/*.test.js"]
+  "exclude": ["./src/*.d.ts", "./src/**/*.d.ts", "./src/**/*.test.js"]
 }
