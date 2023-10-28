@@ -1,3 +1,7 @@
+### v2.0.1 (2023-10-28)
+
+- [Pass request response to error handler on compose](https://github.com/M4RC3L05/sss/commit/9f1b8ba868d15b2036b000e72bf73cb63b4eedff)
+
 ### v2.0.0 (2023-10-28)
 
 - [Update examples](https://github.com/M4RC3L05/sss/commit/a93f98c8b12f3fb8ad7cc8f3900e8ffe941d4308)
