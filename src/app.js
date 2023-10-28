@@ -16,11 +16,18 @@ class App {
   #errorHandler;
 
   /**
+   * @returns {types.ErrorHandler<R> | undefined}
+   */
+  get errorHandler() {
+    return this.#errorHandler?.bind(this);
+  }
+
+  /**
    * @param {...types.Middleware<R>} middlewares
    */
   use(...middlewares) {
     this.#middlewares.push(...middlewares.filter((f) => typeof f === "function"));
-    this.#handler = compose(...this.#middlewares);
+    this.#handler = compose(this.#errorHandler?.bind(this), ...this.#middlewares);
   }
 
   /**
@@ -28,6 +35,7 @@ class App {
    */
   onError(errorHandler) {
     this.#errorHandler = errorHandler;
+    this.#handler = compose(this.#errorHandler?.bind(this), ...this.#middlewares);
   }
 
   /**

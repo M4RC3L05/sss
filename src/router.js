@@ -9,6 +9,16 @@ class Router {
   /** @type {import("find-my-way").Instance<import("find-my-way").HTTPVersion.V1> | undefined} */
   #router;
 
+  /** @type {{ errorHandler: types.ErrorHandler<R> } | undefined} */
+  #app;
+
+  /**
+   * @param {{ errorHandler: types.ErrorHandler<R> | undefined }} [app]
+   */
+  constructor(app) {
+    this.#app = app;
+  }
+
   /**
    * @param {Object} [config]
    */
@@ -23,11 +33,20 @@ class Router {
   }
 
   /**
+   * @param {string} method
+   * @param {string} path
+   * @param {...types.RouteMiddleware<R>} middlewares
+   */
+  #bind(method, path, ...middlewares) {
+    this.#router?.[method]?.(path, compose(this.#app?.errorHandler, ...middlewares));
+  }
+
+  /**
    * @param {string} path
    * @param {...types.RouteMiddleware<R>} middlewares
    */
   get(path, ...middlewares) {
-    this.#router?.get(path, compose(...middlewares));
+    this.#bind("get", path, ...middlewares);
   }
 
   /**
@@ -35,7 +54,7 @@ class Router {
    * @param {...types.RouteMiddleware<R>} middlewares
    */
   head(path, ...middlewares) {
-    this.#router?.head(path, compose(...middlewares));
+    this.#bind("head", path, ...middlewares);
   }
 
   /**
@@ -43,7 +62,7 @@ class Router {
    * @param {...types.RouteMiddleware<R>} middlewares
    */
   post(path, ...middlewares) {
-    this.#router?.post(path, compose(...middlewares));
+    this.#bind("post", path, ...middlewares);
   }
 
   /**
@@ -51,7 +70,7 @@ class Router {
    * @param {...types.RouteMiddleware<R>} middlewares
    */
   put(path, ...middlewares) {
-    this.#router?.put(path, compose(...middlewares));
+    this.#bind("put", path, ...middlewares);
   }
 
   /**
@@ -59,7 +78,7 @@ class Router {
    * @param {...types.RouteMiddleware<R>} middlewares
    */
   delete(path, ...middlewares) {
-    this.#router?.delete(path, compose(...middlewares));
+    this.#bind("delete", path, ...middlewares);
   }
 
   /**
@@ -67,7 +86,7 @@ class Router {
    * @param {...types.RouteMiddleware<R>} middlewares
    */
   connect(path, ...middlewares) {
-    this.#router?.connect(path, compose(...middlewares));
+    this.#bind("connect", path, ...middlewares);
   }
 
   /**
@@ -75,7 +94,7 @@ class Router {
    * @param {...types.RouteMiddleware<R>} middlewares
    */
   options(path, ...middlewares) {
-    this.#router?.options(path, compose(...middlewares));
+    this.#bind("options", path, ...middlewares);
   }
 
   /**
@@ -83,7 +102,7 @@ class Router {
    * @param {...types.RouteMiddleware<R>} middlewares
    */
   trace(path, ...middlewares) {
-    this.#router?.trace(path, compose(...middlewares));
+    this.#bind("trace", path, ...middlewares);
   }
 
   /**
@@ -91,7 +110,7 @@ class Router {
    * @param {...types.RouteMiddleware<R>} middlewares
    */
   patch(path, ...middlewares) {
-    this.#router?.patch(path, compose(...middlewares));
+    this.#bind("patch", path, ...middlewares);
   }
 
   /**

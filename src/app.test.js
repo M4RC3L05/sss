@@ -3,6 +3,36 @@ import * as assert from "node:assert/strict";
 import App from "./app.js";
 
 describe("App", () => {
+  describe("errorHandler", () => {
+    it("should register a error handler", () => {
+      const app = new App();
+
+      assert.equal(app.errorHandler, undefined);
+
+      app.onError(() => {});
+
+      assert.equal(typeof app.errorHandler, "function");
+    });
+
+    it("should not matter where the error handler is registered related to use", () => {
+      const app = new App();
+      const error = new Error("foo");
+      const fn = mock.fn();
+
+      app.use((_, __, n) => {
+        n(error);
+      });
+
+      app.onError(fn);
+
+      app.handle()(1, 2);
+
+      assert.equal(fn.mock.callCount(), 1);
+      assert.equal(fn.mock.calls[0].arguments.length, 1);
+      assert.equal(fn.mock.calls[0].arguments[0], error);
+    });
+  });
+
   describe("handle", () => {
     it("should register a composed handler", async () => {
       const app = new App();
@@ -98,6 +128,24 @@ describe("App", () => {
         async (_, __, n) => n(),
         async () => {
           throw new Error("foo");
+        },
+      );
+
+      app.onError((error) => {
+        assert.equal(error.message, "foo");
+        done();
+      });
+
+      app.handle()();
+    });
+
+    it("should catch all errors on next", (_, done) => {
+      const app = new App();
+
+      app.use(
+        async (_, __, n) => n(),
+        async (_, __, n) => {
+          n(new Error("foo"));
         },
       );
 

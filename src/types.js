@@ -20,8 +20,8 @@
 /** @typedef {Request & RouteRequestExtras} RouteRequest */
 /** @typedef {import("node:http").IncomingMessage & RouteRequestExtras} RouteIncomingMessage */
 
-/** @typedef {() => Promise<void> | void} NodeNext */
-/** @typedef {() => Promise<Response> | Response} WebNext */
+/** @typedef {(error?: any) => Promise<void> | void} NodeNext */
+/** @typedef {(error?: any) => Promise<Response> | Response} WebNext */
 
 /**
  * @template {JsRuntime} [R=CurrentJsRuntime]

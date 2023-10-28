@@ -14,8 +14,8 @@ export type RouteRequestExtras = {
 };
 export type RouteRequest = Request & RouteRequestExtras;
 export type RouteIncomingMessage = import("node:http").IncomingMessage & RouteRequestExtras;
-export type NodeNext = () => Promise<void> | void;
-export type WebNext = () => Promise<Response> | Response;
+export type NodeNext = (error?: any) => Promise<void> | void;
+export type WebNext = (error?: any) => Promise<Response> | Response;
 export type Middleware<R extends JsRuntime = CurrentJsRuntime> = R extends NodeRuntime ? NodeMiddleware : R extends WebRuntime ? WebMiddleware : never;
 export type NodeMiddleware = (request: import("node:http").IncomingMessage, response: import("node:http").ServerResponse, next: NodeNext) => Promise<void> | void;
 export type WebMiddleware = (request: Request, next: WebNext) => Promise<Response> | Response;

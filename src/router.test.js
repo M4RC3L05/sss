@@ -102,6 +102,29 @@ describe("Router", () => {
         assert.equal(f2.mock.callCount(), 1);
         assert.equal(f3.mock.callCount(), 1);
       });
+
+      it("should pass error hander if error handler provided", async () => {
+        const error = new Error("foo");
+        const errorHandler = mock.fn(() => "fiz");
+        const router = await new Router({ errorHandler }).setup();
+        const f1 = mock.fn((_, __, n) => n());
+        const f2 = mock.fn((_, __, n) => n(error));
+        const f3 = mock.fn((_, __, ___) => {
+          return 2;
+        });
+
+        router[method]("/foo", f1, f2, f3);
+
+        const result = router.middleware()({ method: method.toUpperCase(), url: "/foo" });
+
+        assert.equal(result, "fiz");
+        assert.equal(f1.mock.callCount(), 1);
+        assert.equal(f2.mock.callCount(), 1);
+        assert.equal(f3.mock.callCount(), 0);
+        assert.equal(errorHandler.mock.callCount(), 1);
+        assert.equal(errorHandler.mock.calls[0].arguments.length, 1);
+        assert.equal(errorHandler.mock.calls[0].arguments[0], error);
+      });
     });
   }
 

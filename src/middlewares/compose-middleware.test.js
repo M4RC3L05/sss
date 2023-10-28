@@ -16,7 +16,7 @@ describe("composeMiddleware()", () => {
       done();
     });
 
-    composeMiddleware(fn)("request", "response");
+    composeMiddleware(undefined, fn)("request", "response");
   });
 
   it("should handle web style http handler (deno/node)", (_, done) => {
@@ -27,7 +27,7 @@ describe("composeMiddleware()", () => {
       done();
     });
 
-    composeMiddleware(fn)("request");
+    composeMiddleware(undefined, fn)("request");
   });
 
   it("should compose each function", () => {
@@ -54,7 +54,7 @@ describe("composeMiddleware()", () => {
       return result;
     });
 
-    const result = composeMiddleware(f1, f2, f3)();
+    const result = composeMiddleware(undefined, f1, f2, f3)();
 
     assert.equal(result, undefined);
     assert.equal(f1.mock.callCount(), 1);
@@ -87,7 +87,7 @@ describe("composeMiddleware()", () => {
       return result;
     });
 
-    const result = composeMiddleware(f1, f2, f3)();
+    const result = composeMiddleware(undefined, f1, f2, f3)();
 
     assert.equal(result instanceof Promise, true);
 
@@ -106,7 +106,7 @@ describe("composeMiddleware()", () => {
       return 2;
     });
 
-    const result = composeMiddleware(f1, f2, f3)();
+    const result = composeMiddleware(undefined, f1, f2, f3)();
 
     assert.equal(result, 2);
     assert.equal(f1.mock.callCount(), 1);
@@ -119,7 +119,7 @@ describe("composeMiddleware()", () => {
     const f2 = mock.fn((_, __, ___) => 1);
     const f3 = mock.fn((_, __, n) => n());
 
-    const result = composeMiddleware(f1, f2, f3)();
+    const result = composeMiddleware(undefined, f1, f2, f3)();
 
     assert.equal(result, 1);
     assert.equal(f1.mock.callCount(), 1);
@@ -133,7 +133,7 @@ describe("composeMiddleware()", () => {
     const f3 = mock.fn((_, __, n) => n());
     const n = mock.fn();
 
-    composeMiddleware(f1, f2, f3)(1, 2, n);
+    composeMiddleware(undefined, f1, f2, f3)(1, 2, n);
 
     assert.equal(f1.mock.callCount(), 1);
     assert.equal(f2.mock.callCount(), 1);
@@ -147,11 +147,51 @@ describe("composeMiddleware()", () => {
     const f3 = mock.fn((_, __, n) => n());
     const n = mock.fn();
 
-    composeMiddleware(f1, f2, f3)(1, n);
+    composeMiddleware(undefined, f1, f2, f3)(1, n);
 
     assert.equal(f1.mock.callCount(), 1);
     assert.equal(f2.mock.callCount(), 1);
     assert.equal(f3.mock.callCount(), 1);
     assert.equal(n.mock.callCount(), 1);
+  });
+
+  it("should throw if next called with error and no error handler registered", () => {
+    const error = new Error("foo");
+    const f1 = mock.fn((_, __, n) => n());
+    const f2 = mock.fn((_, __, n) => n(error));
+    const f3 = mock.fn((_, __, n) => n());
+    const n = mock.fn();
+
+    try {
+      composeMiddleware(undefined, f1, f2, f3)(1, n);
+
+      assert.fail();
+    } catch (error_) {
+      assert.deepEqual(error_, error);
+      assert.equal(f1.mock.callCount(), 1);
+      assert.equal(f2.mock.callCount(), 1);
+      assert.equal(f3.mock.callCount(), 0);
+      assert.equal(n.mock.callCount(), 0);
+    }
+  });
+
+  it("should call error handler if next called with error", () => {
+    const error = new Error("foo");
+    const f1 = mock.fn((_, __, n) => n());
+    const f2 = mock.fn((_, __, n) => n(error));
+    const f3 = mock.fn((_, __, n) => n());
+    const f4 = mock.fn(() => "fiz");
+    const n = mock.fn();
+
+    const response = composeMiddleware(f4, f1, f2, f3)(1, n);
+
+    assert.equal(response, "fiz");
+    assert.equal(f1.mock.callCount(), 1);
+    assert.equal(f2.mock.callCount(), 1);
+    assert.equal(f3.mock.callCount(), 0);
+    assert.equal(n.mock.callCount(), 0);
+    assert.equal(f4.mock.callCount(), 1);
+    assert.deepEqual(f4.mock.calls[0].arguments.length, 1);
+    assert.deepEqual(f4.mock.calls[0].arguments[0], error);
   });
 });

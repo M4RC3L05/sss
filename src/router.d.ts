@@ -1,5 +1,8 @@
 export default Router;
 declare class Router<R extends types.JsRuntime = types.CurrentJsRuntime> {
+    constructor(app?: {
+        errorHandler: types.ErrorHandler<R> | undefined;
+    } | undefined);
     setup(config?: Object | undefined): Promise<this>;
     get(path: string, ...middlewares: types.RouteMiddleware<R>[]): void;
     head(path: string, ...middlewares: types.RouteMiddleware<R>[]): void;
