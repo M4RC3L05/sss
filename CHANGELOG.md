@@ -1,3 +1,10 @@
+### v2.0.0 (2023-10-28)
+
+- [Update examples](https://github.com/M4RC3L05/sss/commit/a93f98c8b12f3fb8ad7cc8f3900e8ffe941d4308)
+- [Add support to pass error on next and pass error handeler to router](https://github.com/M4RC3L05/sss/commit/7b8bf4e4c5ff0581c355d797d0a9d8f898a95eef)
+- [Add \`onError\` to exmaples](https://github.com/M4RC3L05/sss/commit/789d8dd5ba4f4f4d5955c95f5e68b3c2848ca8a9)
+- [Add missing semi-coluns to examples](https://github.com/M4RC3L05/sss/commit/dee5a58bda52c6cb84aa88b86f2c43b0d07d23f3)
+
 ### v1.0.1 (2023-10-28)
 
 - [Add exmaples](https://github.com/M4RC3L05/sss/commit/859ed7afaebdb43a11b8165191d0191d60c212d8)
