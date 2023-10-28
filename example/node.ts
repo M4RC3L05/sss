@@ -17,7 +17,7 @@ router.get("/foo", (request, response) => {
     params: request.params,
     searchParams: request.searchParams
   }));
-})
+});
 
 // If your middlewares are async and want to do something after the response them,
 // you must await the next, otherwise just call next.

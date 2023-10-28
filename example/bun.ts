@@ -27,4 +27,4 @@ app.use((request, next) => {
 app.use(router.middleware());
 app.use((request) => Response.json({ message: "Not found" }, { status: 404 }));
 
-Bun.serve({ port: 4321, fetch: app.handle() })
+Bun.serve({ port: 4321, fetch: app.handle() });

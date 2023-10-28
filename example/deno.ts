@@ -27,4 +27,4 @@ app.use((request, next) => {
 app.use(router.middleware());
 app.use((request) => Response.json({ message: "Not found" }, { status: 404 }));
 
-Deno.serve({ port: 4321 }, app.handle())
+Deno.serve({ port: 4321 }, app.handle());
