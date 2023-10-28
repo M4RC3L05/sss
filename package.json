@@ -24,7 +24,8 @@
     ],
     "ignore": [
       "src/*.d.ts",
-      "src/**/*.d.ts"
+      "src/**/*.d.ts",
+      "example"
     ],
     "prettier": true,
     "rules": {
