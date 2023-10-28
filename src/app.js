@@ -31,9 +31,9 @@ class App {
   }
 
   /**
-   * @returns {types.Handler<R>}
+   * @returns {types.NodeHandler}
    */
-  handle() {
+  #handeNode() {
     // eslint-disable-next-line unicorn/no-this-assignment
     const self = this;
 
@@ -46,6 +46,36 @@ class App {
         return self.#errorHandler?.(error, request, response);
       }
     };
+  }
+
+  /**
+   * @returns {types.WebHandler}
+   */
+  #handleWeb() {
+    // eslint-disable-next-line unicorn/no-this-assignment
+    const self = this;
+
+    return function handler(request) {
+      try {
+        return Promise.resolve(self.#handler?.(request)).catch((error) =>
+          self.#errorHandler?.(error, request),
+        );
+      } catch (error) {
+        return self.#errorHandler?.(error, request);
+      }
+    };
+  }
+
+  /**
+   * @returns {types.Handler<R>}
+   */
+  handle() {
+    // eslint-disable-next-line no-undef
+    if (typeof Bun !== "undefined" || typeof Deno !== "undefined") {
+      return this.#handleWeb();
+    }
+
+    return this.#handeNode();
   }
 }
 

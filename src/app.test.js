@@ -96,7 +96,7 @@ describe("App", () => {
 
       app.use(
         async (_, __, n) => n(),
-        () => {
+        async () => {
           throw new Error("foo");
         },
       );
@@ -107,6 +107,32 @@ describe("App", () => {
       });
 
       app.handle()();
+    });
+
+    it("should handle bun env", () => {
+      globalThis.Bun = {};
+
+      const app = new App();
+
+      assert.equal(app.handle().length, 1);
+
+      delete globalThis.Bun;
+    });
+
+    it("should handle deno env", () => {
+      globalThis.Deno = {};
+
+      const app = new App();
+
+      assert.equal(app.handle().length, 1);
+
+      delete globalThis.Deno;
+    });
+
+    it("should handle/fllback to node env", () => {
+      const app = new App();
+
+      assert.equal(app.handle().length, 2);
     });
   });
 });
