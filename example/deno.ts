@@ -15,6 +15,9 @@ router.get("/foo", (request) =>
   })
 );
 
+// Catch all errors.
+app.onError((error, request) => Response.json({ error }, { status: 500 }));
+
 // If your middlewares are async and want to do something after the response them,
 // you must await the next, otherwise just call next.
 app.use((request, next) => {
