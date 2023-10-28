@@ -1,3 +1,9 @@
+### v1.0.1 (2023-10-28)
+
+- [Add exmaples](https://github.com/M4RC3L05/sss/commit/859ed7afaebdb43a11b8165191d0191d60c212d8)
+- [Choose http handler based on js runtime](https://github.com/M4RC3L05/sss/commit/f6c8f643eb4ea40419520908543d0625a4980708)
+- [Cleanup tsconfig config](https://github.com/M4RC3L05/sss/commit/98f3b6af0daff4bb64c7198f78f763914fa9a1af)
+
 ### v1.0.0 (2023-10-27)
 
 - [Add tests](https://github.com/M4RC3L05/sss/commit/cb828a85110331602a2453d2b5686daf6b2fd21e)
